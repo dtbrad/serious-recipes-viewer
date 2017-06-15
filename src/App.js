@@ -1,5 +1,5 @@
 import React from 'react';
-import Recipes from './Recipes';
+import RecipeViewer from './RecipeViewer';
 import About from './About';
 import MyForm from './MyForm';
 import Home from './Home';
@@ -18,7 +18,7 @@ const App = () => {
 					<Menu.Item as={Link} name="form" to="form">fake form</Menu.Item>
 				</Menu>
 
-				<Route path="/recipes" component={Recipes} />
+				<Route path="/recipes" component={RecipeViewer} />
 				<Route path="/about" component={About} />
 				<Route path="/form" component={MyForm} />
 				<Route exact path="/" component={Home} />
