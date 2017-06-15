@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { Card, Grid, Container, Header, Segment, List, Image } from 'semantic-ui-react';
+import React from 'react';
+import { Grid } from 'semantic-ui-react';
 import RecipeListItem from './RecipeListItem';
 
-const RecipeList = props => {
-	console.log(props.recipes);
-	const listitems = props.recipes.map(rec => {
-		return <RecipeListItem recipe={rec} />;
+const RecipeList = ({ recipes, onRecipeSelect }) => {
+	const listitems = recipes.map(rec => {
+		return <RecipeListItem onRecipeSelect={onRecipeSelect} recipe={rec} key={rec.id} />;
 	});
 
 	return (
-		<Grid stackable columns={6}>
+		<Grid stackable columns={3}>
 			{listitems}
 		</Grid>
 	);

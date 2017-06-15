@@ -1,14 +1,12 @@
 import React from 'react';
-import { Item, Card, Grid, Container, Header, Segment, List, Image } from 'semantic-ui-react';
+import { Item, Grid, Image } from 'semantic-ui-react';
 
-const RecipeListItem = props => {
-	console.log(props.recipe);
-
+const RecipeListItem = ({ recipe, onRecipeSelect }) => {
 	return (
 		<Grid.Column>
-			<Item>
-				<Image src={props.recipe.thumbnail} />
-				<h5>{props.recipe.title}</h5>
+			<Item onClick={() => onRecipeSelect(recipe)}>
+				<Image src={recipe.thumbnail} />
+				<h5>{recipe.title}</h5>
 			</Item>
 		</Grid.Column>
 	);
