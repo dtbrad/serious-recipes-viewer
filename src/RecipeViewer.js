@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Container, Header, Segment } from 'semantic-ui-react';
+import { Divider, Grid, Container, Header, Segment } from 'semantic-ui-react';
 import axios from 'axios';
 import RecipeList from './RecipeList.js';
 import RecipeDetail from './RecipeDetail.js';
@@ -25,18 +25,16 @@ class RecipeViewer extends Component {
 	render() {
 		return (
 			<Container>
+				<br />
 				<Grid stackable columns={2}>
 					<div className=" ten wide column">
 						<RecipeDetail recipe={this.state.recipe} />
 					</div>
 					<div className="six wide column">
-						<Segment>
-							<Header size="large" textAlign="center">Latest Recipes</Header>
-							<RecipeList
-								recipes={this.state.recipes}
-								onRecipeSelect={selectedRecipe => this.loadSelectedRecipe(selectedRecipe.id)}
-							/>
-						</Segment>
+						<RecipeList
+							recipes={this.state.recipes}
+							onRecipeSelect={selectedRecipe => this.loadSelectedRecipe(selectedRecipe.id)}
+						/>
 					</div>
 				</Grid>
 			</Container>
