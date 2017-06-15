@@ -11,6 +11,7 @@ class RecipeViewer extends Component {
 	}
 
 	componentDidMount() {
+		// axios.get('https://serious-recipes-api.herokuapp.com/recipes').then(response => {
 		axios.get('https://serious-recipes-api.herokuapp.com/recipes').then(response => {
 			this.setState({ recipes: response.data });
 		});
