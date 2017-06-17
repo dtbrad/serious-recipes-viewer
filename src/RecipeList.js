@@ -16,7 +16,7 @@ const RecipeList = ({ recipes, onRecipeSelect }) => {
 
 	return (
 		<div>
-			<Header size="large" textAlign="center">Latest Recipes</Header>
+			<Header size="large" textAlign="center">All Latest Recipes</Header>
 			<Grid stackable columns={3}>
 				{listitems}
 			</Grid>

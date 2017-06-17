@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Divider, Grid, Container, Header, Segment } from 'semantic-ui-react';
+import { Image, Divider, Grid, Container, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import RecipeList from './RecipeList.js';
 import RecipeDetail from './RecipeDetail.js';
+import selogo from './images/se-logo.jpg';
 
 class RecipeViewer extends Component {
 	constructor(props) {
@@ -11,9 +12,9 @@ class RecipeViewer extends Component {
 	}
 
 	componentDidMount() {
-		// axios.get('https://serious-recipes-api.herokuapp.com/recipes').then(response => {
 		axios.get('https://serious-recipes-api.herokuapp.com/recipes').then(response => {
 			this.setState({ recipes: response.data });
+			this.loadSelectedRecipe(this.state.recipes[0].id);
 		});
 	}
 
@@ -27,6 +28,11 @@ class RecipeViewer extends Component {
 		return (
 			<Container>
 				<br />
+				<Header textAlign="center" as="h1">
+					<Image src={selogo} />
+					{' '} Latest Recipes Viewer
+				</Header>
+				<Divider />
 				<Grid stackable columns={2}>
 					<div className=" ten wide column">
 						<RecipeDetail recipe={this.state.recipe} />

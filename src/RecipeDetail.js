@@ -15,6 +15,7 @@ const RecipeDetail = ({ recipe }) => {
 
 		return (
 			<Grid.Column>
+				<Header size="large" textAlign="center">Featured Recipe</Header>
 				<Image fluid src={recipe.thumbnail} />
 				<Header size="huge" textAlign="center">{recipe.title}</Header>
 				<Segment>
