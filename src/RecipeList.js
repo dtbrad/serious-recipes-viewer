@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Dimmer, Loader, Header } from 'semantic-ui-react';
 import RecipeListItem from './RecipeListItem';
 
-const RecipeList = ({ recipes, onRecipeSelect }) => {
+const RecipeList = ({ recipes, onRecipeSelect, featured_id }) => {
 	if (recipes.length === 0) {
 		return (
 			<Dimmer active inverted>
@@ -10,9 +10,13 @@ const RecipeList = ({ recipes, onRecipeSelect }) => {
 			</Dimmer>
 		);
 	}
-	const listitems = recipes.map(rec => {
-		return <RecipeListItem onRecipeSelect={onRecipeSelect} recipe={rec} key={rec.id} />;
-	});
+	const listitems = recipes
+		.filter(function(rec) {
+			return !(rec.id === featured_id);
+		})
+		.map(rec => {
+			return <RecipeListItem onRecipeSelect={onRecipeSelect} recipe={rec} key={rec.id} />;
+		});
 
 	return (
 		<div>

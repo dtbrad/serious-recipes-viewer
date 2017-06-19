@@ -33,6 +33,7 @@ class RecipeViewer extends Component {
 					{' '} Latest Recipes Viewer
 				</Header>
 				<Divider />
+				<br />
 				<Grid stackable columns={2}>
 					<div className=" ten wide column">
 						<RecipeDetail recipe={this.state.recipe} />
@@ -40,6 +41,7 @@ class RecipeViewer extends Component {
 					<div className="six wide column">
 						<RecipeList
 							recipes={this.state.recipes}
+							featured_id={this.state.recipe.id}
 							onRecipeSelect={selectedRecipe => this.loadSelectedRecipe(selectedRecipe.id)}
 						/>
 					</div>
