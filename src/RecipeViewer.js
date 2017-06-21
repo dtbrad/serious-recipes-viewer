@@ -14,25 +14,27 @@ class RecipeViewer extends Component {
 	}
 
 	componentDidMount() {
-		axios.get(`${URL}/recipes`).then(response => {
+		axios.get(`https://serious-recipes-api.herokuapp.com/recipes`).then(response => {
 			this.setState({ recipes: response.data });
 			this.loadSelectedRecipe(this.state.recipes[0].id);
 		});
 	}
 
 	loadSelectedRecipe(id) {
-		axios.get(`${URL}/recipes/${id}`).then(response => {
+		axios.get(`https://serious-recipes-api.herokuapp.com/recipes/${id}`).then(response => {
 			this.setState({ recipe: response.data });
 		});
 	}
 
 	changeTitle(newTitle) {
-		axios.patch(`${URL}/recipes/${this.state.recipe.id}`, { newTitle: newTitle }).then(response => {
-			this.setState({ recipe: response.data });
-			axios.get(`${URL}/recipes`).then(response => {
-				this.setState({ recipes: response.data });
+		axios
+			.patch(`https://serious-recipes-api.herokuapp.com/recipes/${this.state.recipe.id}`, { newTitle: newTitle })
+			.then(response => {
+				this.setState({ recipe: response.data });
+				axios.get(`https://serious-recipes-api.herokuapp.com/recipes`).then(response => {
+					this.setState({ recipes: response.data });
+				});
 			});
-		});
 	}
 
 	render() {
