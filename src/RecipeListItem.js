@@ -6,7 +6,7 @@ const RecipeListItem = ({ recipe, onRecipeSelect }) => {
 		<Grid.Column>
 			<Item onClick={() => onRecipeSelect(recipe)}>
 				<Image src={recipe.thumbnail} />
-				<h5>{recipe.title}</h5>
+				<h5>{recipe.display_title}</h5>
 			</Item>
 		</Grid.Column>
 	);
