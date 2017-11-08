@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Button, Input, Icon, Grid, Header, Segment, List, Image } from 'semantic-ui-react';
+import { Button, Input, Icon, Grid, Header, Segment, List, Image } from 'semantic-ui-react';
+import DisplayInput from './DisplayInput';
 
 class RecipeDetail extends Component {
 	constructor(props) {
@@ -21,42 +22,28 @@ class RecipeDetail extends Component {
 			return <Header size="large" textAlign="center">Pick a recipe...</Header>;
 		} else {
 			const directions = recipe.directions.map(dir => {
-				return <List.Item size="large" key={dir.place}>{dir.place}. {dir.content}</List.Item>;
+				return <DisplayInput size="large" key={dir.place} place={dir.place} content={dir.content} />;
 			});
 			const ingredients = recipe.ingredients.map(ing => {
 				return <List.Item size="large" key={ing.id}>{ing.name}</List.Item>;
 			});
-			const title = this.state.edit
-				? <Form onSubmit={this.handleSubmit}>
-
-						<Input
-							size="massive"
-							fluid={true}
-							placeholder={recipe.display_title}
-							value={this.state.newTitle}
-							onChange={event => {
-								this.setState({ newTitle: event.target.value });
-							}}
-						/>
-						<Button fluid={true} type="submit" value="Submit">submit</Button>
-
-					</Form>
-				: <h2>{recipe.display_title}</h2>;
 
 			return (
 				<Grid.Column>
 					<Header size="large" textAlign="center">
-						Featured Recipe <Icon name="edit" onClick={click => this.setState({ edit: !this.state.edit })} />
+						Featured Recipe
 					</Header>
 					<Image fluid src={recipe.thumbnail} />
-					<Header>{title}</Header>
+					<Header>
+						<h2>{recipe.display_title}</h2>
+					</Header>
 					<Segment>
 						<Header>Ingredients</Header>
-						<List divided relaxed>{ingredients}</List>
+						<div>{ingredients}</div>
 					</Segment>
 					<Segment>
 						<Header>Directions</Header>
-						<List divided relaxed>{directions}</List>
+						<div>{directions}</div>
 					</Segment>
 				</Grid.Column>
 			);
