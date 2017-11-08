@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Button, Input, Icon, Grid, Header, Segment, List, Image } from 'semantic-ui-react';
-import DisplayInput from './DisplayInput';
+import { Grid, Header, Segment, List, Image } from 'semantic-ui-react';
 
 class RecipeDetail extends Component {
 	constructor(props) {
@@ -22,10 +20,10 @@ class RecipeDetail extends Component {
 			return <Header size="large" textAlign="center">Pick a recipe...</Header>;
 		} else {
 			const directions = recipe.directions.map(dir => {
-				return <DisplayInput size="large" key={dir.place} place={dir.place} content={dir.content} />;
+				return <Segment size="large" key={dir.place} place={dir.place} >{dir.content}</Segment>;
 			});
 			const ingredients = recipe.ingredients.map(ing => {
-				return <List.Item size="large" key={ing.id}>{ing.name}</List.Item>;
+				return <List.Item size="large" key={ing.id}> {ing.name} </List.Item>;
 			});
 
 			return (
@@ -37,14 +35,18 @@ class RecipeDetail extends Component {
 					<Header>
 						<h2>{recipe.display_title}</h2>
 					</Header>
-					<Segment>
+
 						<Header>Ingredients</Header>
-						<div>{ingredients}</div>
-					</Segment>
-					<Segment>
+						<Segment>
+								<div>{ingredients}</div>
+				</Segment>
+
+					<div>
 						<Header>Directions</Header>
-						<div>{directions}</div>
-					</Segment>
+						<Segment.Group>
+						{directions}
+					</Segment.Group>
+				</div>
 				</Grid.Column>
 			);
 		}

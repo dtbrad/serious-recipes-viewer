@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Divider, Grid, Container, Header } from 'semantic-ui-react';
+import { Message, Image, Divider, Grid, Container, Header } from 'semantic-ui-react';
 import axios from 'axios';
 import RecipeList from './RecipeList.js';
 import RecipeDetail from './RecipeDetail.js';
@@ -43,6 +43,17 @@ class RecipeViewer extends Component {
 					<Image src={selogo} />
 					{' '} Latest Recipes Viewer
 				</Header>
+				<Divider />
+				<Message>
+					<Header>
+						This is a simple React application tied to a Rails API that scrapes the most recent recipes from the <a href='http://www.serious-eats.com' target='blank'>Serious Eats</a> website
+					</Header>
+					<Divider />
+					<Header textAlign="center">
+					<a href='https://github.com/dtbrad/serious-recipes-viewer' target='blank'>App Repository</a> | <a href='http://serious-recipes-api.herokuapp.com/recipes' target='blank'>Rails API</a> |
+					<a href='https://github.com/dtbrad/serious-recipes-api' target='blank'>Rails API Repository</a>
+				</Header>
+				</Message>
 				<Divider />
 				<br />
 				<Grid stackable columns={2}>
